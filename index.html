@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" id="display" disabled>
+            <div class="buttons">
+                <button class="function" onclick="clearDisplay()">C</button>
+                <button class="function" onclick="deleteLast()">DEL</button>
+                <button class="function" onclick="appendCharacter('%')">%</button>
+                <button class="operator" onclick="appendCharacter('/')">/</button>
+                <button onclick="appendCharacter('7')">7</button>
+                <button onclick="appendCharacter('8')">8</button>
+                <button onclick="appendCharacter('9')">9</button>
+                <button class="operator" onclick="appendCharacter('*')">*</button>
+                <button onclick="appendCharacter('4')">4</button>
+                <button onclick="appendCharacter('5')">5</button>
+                <button onclick="appendCharacter('6')">6</button>
+                <button class="operator" onclick="appendCharacter('-')">-</button>
+                <button onclick="appendCharacter('1')">1</button>
+                <button onclick="appendCharacter('2')">2</button>
+                <button onclick="appendCharacter('3')">3</button>
+                <button class="operator" onclick="appendCharacter('+')">+</button>
+                <button class="zero" onclick="appendCharacter('0')">0</button>
+                <button onclick="appendCharacter('.')">.</button>
+                <button class="operator equal" onclick="calculateResult()">=</button>
+            </div>
+        </div>
+        <div class="info-box">
+            <h2>Calculator </h2>
+            <h3>HTML/CSS/JavaScript</h3>
+            <p>This is a responsive calculator with simpler, everyday functions, which can be used both by clicking the mouse/touch and using the keyboard, considered a simple project to improve and consolidate my knowledge.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

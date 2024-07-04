@@ -1,0 +1,121 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+}
+
+.calculator {
+    position: relative; 
+    z-index: 2;
+    width: 320px;
+    background-color: #333;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#display {
+    width: 88%;
+    padding: 20px;
+    font-size: 2.5em;
+    text-align: right;
+    border: none;
+    border-radius: 10px;
+    background-color: #000;
+    color: #fff;
+    -webkit-box-shadow: inset 0px 0px 10px 0px rgb(255, 255, 255);
+    -moz-box-shadow: inset 0px 0px 10px 0px rgb(255, 255, 255);
+    box-shadow: inset 0px 0px 10px 0px rgb(50, 50, 50);
+    margin-bottom: 10px;
+}
+
+.info-box {
+    position: absolute;
+    left: -20px; /* starting position info-box */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 180px;
+    background-color: #444;
+    border-radius: 10px 0 0 10px;
+    padding: 30px;
+    color: #fff;
+    text-align: center;
+    z-index: 1; 
+    transition: left 0.5s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.container:hover .info-box {
+    left: -240px; /* animation of info-box */
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    padding: 20px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 10px;
+    background-color: #505050;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button.function {
+    background-color: #a6a6a6;
+    color: #000;
+}
+
+button.operator {
+    background-color: #ff9500;
+}
+
+button.operator.equal {
+    background-color: #ff9500;
+    grid-column: span 1;
+}
+
+button.zero {
+    grid-column: span 2;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+
+/* Responsiveness */
+@media (max-width: 400px) {
+    .calculator {
+        width: 100%;
+        margin: 20px;
+        padding: 10px;
+    }
+
+    #display {
+        padding: 15px;
+        font-size: 2em;
+    }
+
+    button {
+        padding: 15px;
+        font-size: 1.2em;
+    }
+}
