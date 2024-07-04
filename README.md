@@ -1,1 +1,1 @@
-This is a responsive calculator with simpler, everyday functions.
+This is a responsive calculator with simpler everyday functions.
