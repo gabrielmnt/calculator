@@ -118,4 +118,8 @@ button:hover {
         padding: 15px;
         font-size: 1.2em;
     }
+
+    .info-box {
+        display: none; /* Hide info box on small screens */
+    }
 }
