@@ -102,7 +102,7 @@ button:hover {
 
 
 /* Responsiveness */
-@media (max-width: 400px) {
+@media (max-width: 600px) {
     .calculator {
         width: 100%;
         margin: 20px;
@@ -120,6 +120,6 @@ button:hover {
     }
 
     .info-box {
-        display: none; /* Hide info box on small screens */
+        display: none; 
     }
 }
