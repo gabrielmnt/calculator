@@ -9,7 +9,7 @@ function deleteLast() {
 }
 
 function appendCharacter(character) {
-    if (display.value === 'Erro' && character){
+    if (display.value === 'Erro' && character) {
         display.value = '';
     }
     display.value += character;
@@ -21,7 +21,7 @@ function handleKeyPress(event) {
     
     // Checks if the key pressed is Backspace
     if (keyPressed === 'Backspace') {
-        clearDisplay();
+        deleteLast();
     } else if (!isNaN(keyPressed) || ['%', '/', '*', '-', '+', '.', '='].includes(keyPressed)) {
         appendCharacter(keyPressed);
     }
@@ -43,36 +43,28 @@ function calculateResult() {
         // Gets the mathematical expression from the display
         let expression = display.value;
 
-        if (expression.includes('-')) {
-            // subtract a percentage from a number
-            let parts = expression.split('-');
-            let number1 = parseFloat(parts[0]);
-            let number2 = parseFloat(parts[1]);
+        // Handle percentage calculations
+        if (expression.includes('%')) {
+            expression = expression.replace(/(\d+(\.\d+)?)%/g, (match, number) => {
+                return `(${number} / 100)`;
+            });
 
-            if (Number.isInteger(number2)) {
-                // If the second number is an integer, convert it to an integer
-                number2 = parseInt(parts[1]);
-            }
+            // Apply the percentage to the previous number if any
+            expression = expression.replace(/(\d+(\.\d+)?)([+\-*/])\((\d+(\.\d+)?) \/ 100\)/g, (match, num1, _, operator, num2) => {
+                return `(${num1} ${operator} (${num1} * ${num2} / 100))`;
+            });
+        }
 
-            let result = number1 - number2;
+        let result = eval(expression);
 
-            if (Number.isInteger(result)) {
-                display.value = result; // Remove decimal places
-            } else {
-                display.value = result.toFixed(2); // Round to two decimal places
-            }
+        if (isNaN(result)) {
+            throw "Expressão inválida";
+        }
+        
+        if (Number.isInteger(result)) {
+            display.value = result; // Remove decimal places
         } else {
-            // calculate a percentage of a number
-            let result = eval(expression);
-            if (isNaN(result)) {
-                throw "Expressão inválida";
-            }
-            
-            if (Number.isInteger(result)) {
-                display.value = result; // Remove decimal places
-            } else {
-                display.value = result.toFixed(2); // Round to two decimal places
-            }
+            display.value = result.toFixed(2); // Round to two decimal places
         }
     } catch (error) {
         console.error(error); // Shows the error in the console
